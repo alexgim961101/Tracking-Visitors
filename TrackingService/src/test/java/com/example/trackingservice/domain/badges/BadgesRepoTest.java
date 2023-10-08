@@ -1,7 +1,6 @@
 package com.example.trackingservice.domain.badges;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -22,7 +21,6 @@ class BadgesRepoTest {
 
     @Test
     @DisplayName(value = "저장 테스트")
-    @Order(1)
     void saveTest() {
         // given
         Badges badges = Badges.createBadge("http://www.naver.com", "white", "hits", "black", "round", "green");
