@@ -23,7 +23,7 @@ class BadgesRepoTest {
     @DisplayName(value = "저장 테스트")
     void saveTest() {
         // given
-        Badges badges = Badges.createBadge("http://www.naver.com", "white", "hits", "black", "round", "green");
+        Badges badges = Badges.createBadge("http://www.naver.com", "white", "hits", "black", "round", "green", "");
 
         // when
         Badges badgeEntity = badgesRepo.save(badges);
@@ -36,7 +36,7 @@ class BadgesRepoTest {
     @DisplayName(value = "조회 테스트")
     void getTest() {
         // givem
-        Badges badges = Badges.createBadge("http://www.naver.com", "white", "hits", "black", "round", "green");
+        Badges badges = Badges.createBadge("http://www.naver.com", "white", "hits", "black", "round", "green", "");
         badgesRepo.save(badges);
 
         // when
@@ -50,7 +50,7 @@ class BadgesRepoTest {
     @DisplayName(value = "수정 테스트")
     void updateTest() {
         // given
-        Badges badges = Badges.createBadge("http://www.naver.com", "white", "hits", "black", "round", "green");
+        Badges badges = Badges.createBadge("http://www.naver.com", "white", "hits", "black", "round", "green", "");
         badgesRepo.save(badges);
 
         // when
@@ -65,7 +65,7 @@ class BadgesRepoTest {
     @DisplayName(value = "삭제 테스트")
     void deleteTest() {
         // given
-        Badges badges = Badges.createBadge("http://www.naver.com", "white", "hits", "black", "round", "green");
+        Badges badges = Badges.createBadge("http://www.naver.com", "white", "hits", "black", "round", "green", "");
         Long id = badgesRepo.save(badges).getId();
 
         // when

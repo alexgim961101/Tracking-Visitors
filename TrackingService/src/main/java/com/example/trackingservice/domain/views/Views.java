@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,10 +18,10 @@ public class Views {
     private String url;
     @Column(nullable = false)
     @CreationTimestamp
-    private LocalDateTime viewAt;
+    private LocalDate viewAt;
 
     @Builder
-    public Views(Long id, String url, LocalDateTime viewAt) {
+    public Views(Long id, String url, LocalDate viewAt) {
         this.id = id;
         this.url = url;
         this.viewAt = viewAt;
