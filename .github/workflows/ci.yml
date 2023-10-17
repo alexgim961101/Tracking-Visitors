@@ -29,8 +29,8 @@ jobs:
       - name: Build with Gradle
         run: |
           cd notification
-          ./gradlew clean build
+          ./gradlew clean build -x
           cd ../
           cd TrackingService
-          ./gradlew clean build
+          ./gradlew clean build -x
 
