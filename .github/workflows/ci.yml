@@ -1,5 +1,5 @@
 # 워크플로의 이름 지정
-name: CI
+name: CICD
 
 # 워크플로가 시작될 조건
 on:
@@ -34,4 +34,11 @@ jobs:
           cd ../
           cd TrackingService
           ./gradlew build -x check --parallel
+
+      - name: Docker build & push to Docker repo
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/directors-dev .
+          docker push ${{ secrets.DOCKER_REPO }}/directors-dev
+          
 

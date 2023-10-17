@@ -1,0 +1,62 @@
+version: "2"
+services:
+  tracking-database:
+    container_name: tracking-database
+    build:
+      dockerfile: Dockerfile
+      context: ./mysql
+    image: alexgim961101/tracking-service/tracking-database
+    environment:
+      - MYSQL_DATABASE=tracking
+      - MYSQL_ROOT_PASSWORD=3778
+    volumes:
+      - ./mysql/config:/etc/mysql/conf.d
+    ports:
+      - "3306:3306"
+
+  zookeeper:
+    image: wurstmeister/zookeeper:latest
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+  kafka:
+    image: wurstmeister/kafka:latest
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  tracking-service:
+    container_name: tracking-service
+    build:
+      dockerfile: Dockerfile
+      context: ./TrackingService
+    depends_on:
+      - zookeeper
+      - kafka
+      - tracking-database
+    image: alexgim961101/tracking-service/tracking-service
+    ports:
+      - "8080:8080"
+    restart: always
+
+  notification-service:
+    container_name: notification-service
+    build:
+      dockerfile: Dockerfile
+      context: ./notification
+    depends_on:
+      - zookeeper
+      - kafka
+      - tracking-database
+      - tracking-service
+    image: alexgim961101/tracking-service/notification-service
+    ports:
+      - "8081:8081"
+    restart: always
