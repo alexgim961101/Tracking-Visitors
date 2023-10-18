@@ -34,12 +34,15 @@ jobs:
           cd TrackingService
           ./gradlew clean build -x test
 
+      - name: Docker hub login
+      - run : |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Docker build & push to Docker repo
         run: |
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/tracking_db ./mysql
-          docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/notification_service ./notification
-          docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/tracking_service ./TrackingService
+          docker build -f ./mysql/Dockerfile -t ${{ secrets.DOCKER_REPO }}/tracking_db ./mysql
+          docker build -f ./notification/Dockerfile -t ${{ secrets.DOCKER_REPO }}/notification_service ./notification
+          docker build -f ./TrackingService/Dockerfile -t ${{ secrets.DOCKER_REPO }}/tracking_service ./TrackingService
           docker push ${{ secrets.DOCKER_REPO }}/tracking_db
           docker push ${{ secrets.DOCKER_REPO }}/notification_service
           docker push ${{ secrets.DOCKER_REPO }}/tracking_service
