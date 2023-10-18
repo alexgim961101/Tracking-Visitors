@@ -50,6 +50,7 @@ jobs:
           docker push ${{ secrets.DOCKER_REPO }}:tracking
 
 
+
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         id: deploy
