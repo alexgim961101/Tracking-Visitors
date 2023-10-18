@@ -61,5 +61,5 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_REPO }}:db
             sudo docker pull ${{ secrets.DOCKER_REPO }}:tracking
             sudo docker pull ${{ secrets.DOCKER_REPO }}:notification
-            docker-compose up -d
+            ./deploy.sh
             docker image prune -f

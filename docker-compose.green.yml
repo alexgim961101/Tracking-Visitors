@@ -1,0 +1,23 @@
+version: "3"
+services:
+  tracking-service-green:
+    container_name: tracking-service-green
+    build:
+      dockerfile: Dockerfile
+      context: ./TrackingService
+    image: alexgim961101/tracking-service:tracking
+    ports:
+      - "8080:8080"
+    restart: always
+
+  notification-service-green:
+    container_name: notification-service-green
+    build:
+      dockerfile: Dockerfile
+      context: ./notification
+    depends_on:
+      - tracking-service
+    image: alexgim961101/tracking-service:notification
+    ports:
+      - "8081:8081"
+    restart: always

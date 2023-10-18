@@ -1,0 +1,23 @@
+version: "3"
+services:
+  tracking-service-blue:
+    container_name: tracking-service-blue
+    build:
+      dockerfile: Dockerfile
+      context: ./TrackingService
+    image: alexgim961101/tracking-service:tracking
+    ports:
+      - "9080:9080"
+    restart: always
+
+  notification-service-blue:
+    container_name: notification-service-blue
+    build:
+      dockerfile: Dockerfile
+      context: ./notification
+    depends_on:
+      - tracking-service
+    image: alexgim961101/tracking-service:notification
+    ports:
+      - "9081:9081"
+    restart: always
