@@ -34,8 +34,9 @@ jobs:
           cd TrackingService
           ./gradlew clean build -x test
 
+
       - name: Docker hub login
-      - run : |
+        run : |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker build & push to Docker repo
