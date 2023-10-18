@@ -5,7 +5,7 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./mysql
-    image: alexgim961101/tracking-service/tracking-database
+    image: alexgim961101/tracking-service:db
     environment:
       - MYSQL_DATABASE=tracking
       - MYSQL_ROOT_PASSWORD=3778
@@ -41,7 +41,7 @@ services:
       - zookeeper
       - kafka
       - tracking-database
-    image: alexgim961101/tracking-service/tracking-service
+    image: alexgim961101/tracking-service:tracking
     ports:
       - "8080:8080"
     restart: always
@@ -56,7 +56,7 @@ services:
       - kafka
       - tracking-database
       - tracking-service
-    image: alexgim961101/tracking-service/notification-service
+    image: alexgim961101/tracking-service:notification
     ports:
       - "8081:8081"
     restart: always

@@ -48,5 +48,20 @@ jobs:
           docker push ${{ secrets.DOCKER_REPO }}:db
           docker push ${{ secrets.DOCKER_REPO }}:notification
           docker push ${{ secrets.DOCKER_REPO }}:tracking
-          
 
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        id: deploy
+        with:
+          host: ${{ secrets.HOST }}
+          username: ubuntu
+          key: ${{ secrets.KEY }}
+          envs: GITHUB_SHA
+        script: |
+          sudo docker rm -f $(docker ps -qa)
+          sudo docker pull ${{ secrets.DOCKER_REPO }}:db
+          sudo docker pull ${{ secrets.DOCKER_REPO }}:tracking
+          sudo docker pull ${{ secrets.DOCKER_REPO }}:notification
+          docker-compose up -d
+          docker image prune -f
