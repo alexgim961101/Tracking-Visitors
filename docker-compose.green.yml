@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
       context: ./TrackingService
     image: alexgim961101/tracking-service:tracking
+    environment:
+      - SERVER_PORT=8080
     ports:
       - "8080:8080"
     restart: always
@@ -16,8 +18,10 @@ services:
       dockerfile: Dockerfile
       context: ./notification
     depends_on:
-      - tracking-service
+      - tracking-service-green
     image: alexgim961101/tracking-service:notification
+    environment:
+      - SERVER_PORT=8081
     ports:
       - "8081:8081"
     restart: always
