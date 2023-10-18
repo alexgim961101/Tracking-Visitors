@@ -1,6 +1,6 @@
 # [넘블] 방문자 수 트래킹 서비스 구축하기
 ## 아키텍쳐
-![스크린샷 2023-10-18 오후 7.30.52.png](..%2F..%2F..%2FDesktop%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-10-18%20%EC%98%A4%ED%9B%84%207.30.52.png)
+<img width="666" alt="스크린샷 2023-10-18 오후 7 30 52" src="https://github.com/alexgim961101/Tracking-Visitors/assets/74600075/6cb77d55-ac05-4a14-be60-a9771aaecddf">
 ## 배포
-![스크린샷 2023-10-18 오후 7.39.54.png](..%2F..%2F..%2FDesktop%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-10-18%20%EC%98%A4%ED%9B%84%207.39.54.png)
+<img width="671" alt="스크린샷 2023-10-18 오후 7 39 54" src="https://github.com/alexgim961101/Tracking-Visitors/assets/74600075/506bcd1e-231b-4249-b0a5-46e6c1689fd9">
 ## API
