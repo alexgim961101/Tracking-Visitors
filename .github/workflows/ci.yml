@@ -29,16 +29,19 @@ jobs:
       - name: Build with Gradle
         run: |
           cd notification
-          ./gradlew clean
-          ./gradlew build -x check --parallel
+          ./gradlew clean build -x test
           cd ../
           cd TrackingService
-          ./gradlew build -x check --parallel
+          ./gradlew clean build -x test
 
       - name: Docker build & push to Docker repo
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/directors-dev .
-          docker push ${{ secrets.DOCKER_REPO }}/directors-dev
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/tracking_db ./mysql
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/notification_service ./notification
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/tracking_service ./TrackingService
+          docker push ${{ secrets.DOCKER_REPO }}/tracking_db
+          docker push ${{ secrets.DOCKER_REPO }}/notification_service
+          docker push ${{ secrets.DOCKER_REPO }}/tracking_service
           
 
