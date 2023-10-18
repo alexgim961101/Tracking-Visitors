@@ -42,10 +42,11 @@ jobs:
 
       - name: Docker build & push to Docker repo
         run: |
-          docker build -f ./mysql/Dockerfile -t ${{ secrets.DOCKER_REPO }} .
-          docker build -f ./notification/Dockerfile -t ${{ secrets.DOCKER_REPO }} .
-          docker build -f ./TrackingService/Dockerfile -t ${{ secrets.DOCKER_REPO }} .
-          docker push ${{ secrets.DOCKER_REPO }}
-          
+          docker build -f ./mysql/Dockerfile -t ${{ secrets.DOCKER_REPO }}:db .
+          docker build -f ./notification/Dockerfile -t ${{ secrets.DOCKER_REPO }}:notification .
+          docker build -f ./TrackingService/Dockerfile -t ${{ secrets.DOCKER_REPO }}:tracking .
+          docker push ${{ secrets.DOCKER_REPO }}:db
+          docker push ${{ secrets.DOCKER_REPO }}:notification
+          docker push ${{ secrets.DOCKER_REPO }}:tracking
           
 
