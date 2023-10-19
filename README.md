@@ -1,6 +1,7 @@
 # [넘블] 방문자 수 트래킹 서비스 구축하기
 ## 아키텍쳐
-<img width="666" alt="스크린샷 2023-10-18 오후 7 30 52" src="https://github.com/alexgim961101/Tracking-Visitors/assets/74600075/6cb77d55-ac05-4a14-be60-a9771aaecddf">
+![스크린샷 2023-10-19 오후 1 08 44](https://github.com/alexgim961101/Tracking-Visitors/assets/74600075/b3416d1a-d7b9-471c-a84e-7ba6c7e85f19)
+
 
 ### 1). notification서버를 따로 둔 이유
 하나의 서버에서 계속 요청을 받으면서 지속적으로 client에 응답을 보내면 부담이 증가하기 때문
@@ -14,7 +15,7 @@
 - 현재 서비스에서는 서버에서 client로 실시간 응답만 필요하기 때문에 SSE 사용
 
 ## 배포
-<img width="671" alt="스크린샷 2023-10-18 오후 7 39 54" src="https://github.com/alexgim961101/Tracking-Visitors/assets/74600075/506bcd1e-231b-4249-b0a5-46e6c1689fd9">
+![스크린샷 2023-10-19 오후 1 10 24](https://github.com/alexgim961101/Tracking-Visitors/assets/74600075/a901eafe-60a7-43fc-9ec2-f917e8df5da1)
 
 ### 1). 깃허브 액션 사용이유
 - 간단한 사용
