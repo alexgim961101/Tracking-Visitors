@@ -10,7 +10,8 @@
 - pub/sub 방식 (rabbitmq는 메세지 브로커 방식 -> notification 에서는 받는 데이터는 아주 중요한 데이터는 아니기 때문에 수신자가 확인할 필요 X)
 
 ### 3). SSE VS WebSocket
-- 
+- 웹소켓은 양방향 통신이고 SSE는 단방향 통신
+- 현재 서비스에서는 서버에서 client로 실시간 응답만 필요하기 때문에 SSE 사용
 
 ## 배포
 <img width="671" alt="스크린샷 2023-10-18 오후 7 39 54" src="https://github.com/alexgim961101/Tracking-Visitors/assets/74600075/506bcd1e-231b-4249-b0a5-46e6c1689fd9">
